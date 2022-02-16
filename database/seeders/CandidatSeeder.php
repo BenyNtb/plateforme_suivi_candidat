@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class EtudiantSeeder extends Seeder
+class CandidatSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class EtudiantSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('etudiants')->insert([
+        DB::table('candidats')->insert([
             [
                 "nom" => "Dujardin",
                 "prenom" => "Jean",
