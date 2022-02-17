@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class SexeSeeder extends Seeder
+class GenreSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,19 +14,20 @@ class SexeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('sexes')->insert([
+        DB::table('genres')->insert([
             [
-                "nom"           =>  "femme",
+                "nom"           =>  "Femme",
                 "created_at"    =>  now(),
             ],
             [
-                "nom"           =>  "homme",
+                "nom"           =>  "Homme",
                 "created_at"    =>  now(),
             ],
             [
-                "nom"           =>  "autres",
+                "nom"           =>  "Autre",
                 "created_at"    =>  now(),
             ],
         ]);
+
     }
 }

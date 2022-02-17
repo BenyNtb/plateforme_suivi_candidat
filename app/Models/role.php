@@ -5,7 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class role extends Model
+class Role extends Model
 {
     use HasFactory;
+    protected $table ="role_candidat";
+
+    public function candidats()
+    {
+        return $this->hasMany(Candidat::class);
+    }
+    
 }
