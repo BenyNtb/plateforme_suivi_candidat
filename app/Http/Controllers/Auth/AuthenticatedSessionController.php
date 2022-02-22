@@ -28,6 +28,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        // dd('test');
         if(auth()->guard('candidat')->attempt([
             'email' => $request->email,
             'password' => $request->password,

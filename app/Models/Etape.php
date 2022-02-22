@@ -14,4 +14,8 @@ class Etape extends Model
         return $this->hasMany(Seance::class);
     }
 
+    public function evenement()
+    {
+        return $this->belongsTo(Evenement::class);
+    }
 }
