@@ -14,8 +14,7 @@ class FrontController extends Controller
     function index()
     {
         $types = EvenementType::all()->sortBy('evenement_type_id');
-        $text_accroche =  StockageText::first();
-        return view('home', compact('types','text_accroche'));
+        return view('home', compact('types'));
     }
 
     public function showDate(EvenementType $id)

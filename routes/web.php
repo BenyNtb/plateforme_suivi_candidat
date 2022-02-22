@@ -1,5 +1,14 @@
 <?php
 
+use App\Http\Controllers\CalendrierController;
+use App\Http\Controllers\ClasseController;
+use App\Http\Controllers\CommunauteController;
+use App\Http\Controllers\FormulaireController;
+use App\Http\Controllers\FrontController;
+use App\Http\Controllers\MailController;
+use App\Http\Controllers\MaterielController;
+use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,32 +54,7 @@ Route::middleware(['auth:candidat'])->group(function () {
     Route::get('/back/profil/seances/etape-interview/{id}/{seance}', [SeanceController::class, "inscriptionItw"])->name('inscription.date');
     Route::post('/back/profil/seances/interview/{id}', [SeanceController::class, "storeEtape"])->name('inscription.interview');
     Route::get('/back/annulation/seance/{id}', [ProfilController::class, 'seanceDelete'])->name('seance.cancel');
-    //mail
-    Route::get('/back/mail', [MailController::class, 'index'])->name('mail.index');
-    Route::get('/back/mail/create', [MailController::class, 'create'])->name('mail.create');
-    Route::post('/back/mail/store', [MailController::class, 'store'])->name('mail.store');
-    Route::get('/back/mail//{id}/edit', [MailController::class, 'edit'])->name('mail.edit');
-    Route::put('/back/mail/{id}/update', [MailController::class, 'update'])->name('mail.update');
-    Route::get('/back/mail//{id}/write', [MailController::class, 'write'])->name('mail.write');
-    Route::put('/back/mail/{id}/send', [MailController::class, 'send'])->name('mail.send');
-    Route::get('/back/mail/write', [MailController::class, 'newwrite'])->name('newmail.write');
-    Route::put('/back/mail/send', [MailController::class, 'newsend'])->name('newmail.send');
-    Route::get('/admin/mail/recherche', [MailController::class, 'search'])->name('mail.search');
-    //mail student
-    Route::get('/back/mail/{student}', [MailController::class, 'index_student'])->name('mail.student.index');
-    Route::get('/back/mail//{id}/write/{student}', [MailController::class, 'write_student'])->name('mail.student.write');
-    Route::put('/back/mail/{id}/send/{student}', [MailController::class, 'send_student'])->name('mail.student.send');
-    Route::get('/admin/mail/recherche/{student}', [MailController::class, 'search_student'])->name('mail.search.student');
-    Route::get('/back/mail/write/{student}', [MailController::class, 'newwrite_student'])->name('newmail.write.student');
-    Route::put('/back/mail/send/{student}', [MailController::class, 'newsend_student'])->name('newmail.send.student');
-    // COMMUNAUTE
-    Route::get('/admin/communaute/create/{id}', [CommunauteController::class, 'store_auth'])->name('communauté.store_auth');
-    // boite mail:
-    Route::get('/admin/boitemail', [BoitemailController::class, 'boitemail'])->name('mail.boitemail');
-    Route::get('/admin/boitemail/{student}', [BoitemailController::class, 'boitemail_student'])->name('mail.boitemail.student');
-    Route::get('/admin/boitemail/show/{id}', [BoitemailController::class, 'boitemail_show'])->name('mail.boitemail.show');
-    // Condition:
-    Route::get('/admin/condition', [CondtitionController::class, 'index'])->name('condition.index');
+
 
 
     // ETUDIANT
@@ -95,71 +79,6 @@ Route::middleware(['auth:candidat'])->group(function () {
 
     Route::delete('/formulaire/{id}/destroy/question', [DeleteForFormController::class, "destroyQuestion"])->name('question.destroyQuestion');
 
-    //& CAROUSEL &//
-    Route::get('/carousel/index', [CarouselController::class, "index"])->name('carousel.index');
-
-    Route::post('/carousel/image/store', [CarouselController::class, "storeImage"])->name("carousel.storeImage");
-    Route::delete('/carousel/image/{id}/destroy', [CarouselController::class, "destroyImage"])->name("carousel.destroyImage");
-
-    Route::put('/carousel/update/{id}/timer', [CarouselController::class, "changeTimer"])->name('carousel.changeTimer');
-
-    Route::post('/carousel/video/store', [CarouselController::class, "storeVideo"])->name('carousel.storeVideo');
-    Route::delete('/carousel/video/{id}/destroy', [CarouselController::class, "destroyVideo"])->name('carousel.destroyVideo');
-
-    Route::post('/carousel/url/store', [CarouselController::class, 'storeUrl'])->name('carousel.storeUrl');
-    Route::delete('/carousel/url/{id}/destroy', [CarouselController::class, "destroyUrl"])->name('carousel.destroyUrl');
-
-    Route::post('/carousel/evenement/type/store', [CarouselController::class, "storeEvent"])->name('carousel.storeEvent');
-    Route::delete('/carousel/evenement/type/{id}/destroy', [CarouselController::class, "destroyEvent"])->name('carousel.destroyEvent');
-
-    Route::put('/carousel/checkbox/{id}/true', [CarouselController::class, "checkboxTrue"])->name('carousel.checkboxTrue');
-    Route::put('/carousel/checkbox/{id}/false', [CarouselController::class, "checkboxFalse"])->name('carousel.checkboxFalse');
-
-    Route::put('/carousel/order/{id}/switch', [CarouselController::class, "changeOrder"])->name('carousel.changeOrder');
-    //& CAROUSEL &//
-
-    //& PARENTHESE &//
-    Route::get('/formulaire/{id}/create/simple/question', [CreateQuestionController::class, "createSimple"])->name('question.createSimple');
-    Route::get('/formulaire/{id}/create/complexe/question', [CreateQuestionController::class, "createComplexe"])->name('question.createComplexe');
-    Route::get('/formulaire/{id}/create/date/question', [CreateQuestionController::class, "createDate"])->name('question.createDate');
-    Route::get('/formulaire/{id}/create/number/question', [CreateQuestionController::class, "createNumber"])->name('question.createNumber');
-    Route::get('/formulaire/{id}/create/email/question', [CreateQuestionController::class, "createEmail"])->name('question.createEmail');
-    Route::get('/formulaire/{id}/create/choixunique/question', [CreateQuestionController::class, "createchoixUnique"])->name('question.createChoixUnique');
-    Route::get('/formulaire/{id}/add/create/choixunique/question', [CreateQuestionController::class, "createAddChoixUnique"])->name('question.createAddChoixUnique');
-    Route::get('/formulaire/{id}/create/choixmultiple/question', [CreateQuestionController::class, "createChoixMultiple"])->name('question.createChoixMultiple');
-    Route::get('/formulaire/{id}/add/create/choixmultiple/question', [CreateQuestionController::class, "createAddChoixMultiple"])->name('question.createAddChoixMultiple');
-    Route::get('/formulaire/{id}/show/reponse/for/user', [StoreFormController::class, "showUserForm"])->name('formulaire.showUserForm');
-    Route::post('/formulaire/{id}/update/form', [StoreFormController::class, "updateUserForm"])->name('formulaire.updateUserForm');
-
-    Route::put('formulaire/{id}/store/simple/question', [CreateQuestionController::class, "storeSimple"])->name('question.storeSimple');
-    Route::put('formulaire/{id}/store/complexe/question', [CreateQuestionController::class, "storeComplexe"])->name('question.storeComplexe');
-    Route::put('formulaire/{id}/store/date/question', [CreateQuestionController::class, "storeDate"])->name('question.storeDate');
-    Route::put('formulaire/{id}/store/number/question', [CreateQuestionController::class, "storeNumber"])->name('question.storeNumber');
-    Route::put('formulaire/{id}/store/email/question', [CreateQuestionController::class, "storeEmail"])->name('question.storeEmail');
-    Route::put('/formulaire/{id}/store/choixunique/question', [CreateQuestionController::class, "storeChoixUnique"])->name('question.storeChoixUnique');
-    Route::put('/formulaire/{id}/add/store/choixunique/question', [CreateQuestionController::class, "storeAddChoixUnique"])->name('question.storeAddChoixUnique');
-    Route::delete('/formulaire/{id}/delete/choixunique', [DeleteForFormController::class, "destroyChoixUnique"])->name("question.destroyChoixUnique");
-    Route::put('/formulaire/{id}/store/choixmultiple/question', [CreateQuestionController::class, "storeChoixMultiple"])->name("question.storeChoixMultiple");
-    Route::put('/formulaire/{id}/add/store/choixmultiple/question', [CreateQuestionController::class, "storeAddChoixMultiple"])->name("question.storeAddChoixMultiple");
-    Route::delete('/formulaire/{id}/delete/choixmultiple/question', [DeleteForFormController::class, "destroyChoixMultiple"])->name("question.destroyChoixMultiple");
-    Route::put('/formulaire/{id}/update/questions', [StoreFormController::class, "saveUpdate"])->name('formulaire.saveUpdate');
-    //& PARENTHESE &//
-    // REMPLIR LE FORM PAR ETUDIANT
-    Route::get('/formulaire/created/{id}/show', [StoreFormController::class, "show"])->name('createdForm.show');
-    Route::put('/formulaire/created/{id}/store', [StoreFormController::class, "store"])->name('createdForm.store');
-
-    //classe coach 
-    Route::get('/classe', [ClasseController::class, 'index'])->name('index.classe');
-    Route::post('/classe/creation', [ClasseController::class, 'presence_store'])->name('presence.store');
-    Route::get('/classe/presence/{id}', [ClasseController::class, 'liste_presence'])->name('presence.classe');
-    Route::post('/classe/arrivee', [ClasseController::class, 'heure_arrivee'])->name('arrivee.classe');
-    Route::put('/classe/depart/{id}', [ClasseController::class, 'heure_depart'])->name('depart.classe');
-    Route::get('/admin/etudiant/{id}/show', [UserController::class, 'show'])->name('etudiant.show');
-    Route::put('/admin/horaire/edit/{id}', [ClasseController::class, 'update_horaire'])->name('update.horaire');
-    //calendrier coach
-    Route::get('/classe/calendrier', [CalendrierController::class, 'index'])->name('calendrier.index');
-    Route::get('/classe/calendrier/show/{id}', [CalendrierController::class, 'show'])->name('calendrier.show');
-    Route::get('/classe/calendrier/pdf/{id}', [CalendrierController::class, 'getPDF'])->name('calendrier.pdf');
 
     // -----middleware ADMIN et PARTENAIRE
     Route::middleware(['admin_part'])->group(function () {
