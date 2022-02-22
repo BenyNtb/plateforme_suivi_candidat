@@ -23,4 +23,9 @@ class Candidat extends Model
     {
         return $this->hasMany(SeanceCandidat::class, 'candidat_id   ');
     }
+    
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
 }
