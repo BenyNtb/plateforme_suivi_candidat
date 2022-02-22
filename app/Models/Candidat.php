@@ -4,15 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Candidat extends Authenticatable
+class Candidat extends Model
 {
     use HasFactory;
-    public function role()
-    {
-        return $this->belongsTo(Role::class);
-    }
 
     public function infos()
     {
@@ -22,5 +17,15 @@ class Candidat extends Authenticatable
     public function commentaires()
     {
         return $this->hasMany(Commentaire::class);
+    }
+
+    public function seance_candidat()
+    {
+        return $this->hasMany(SeanceCandidat::class, 'candidat_id   ');
+    }
+    
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
     }
 }

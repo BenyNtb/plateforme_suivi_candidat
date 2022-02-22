@@ -1,14 +1,6 @@
 <?php
 
-use App\Http\Controllers\CalendrierController;
-use App\Http\Controllers\ClasseController;
-use App\Http\Controllers\CommunauteController;
-use App\Http\Controllers\FormulaireController;
 use App\Http\Controllers\FrontController;
-use App\Http\Controllers\MailController;
-use App\Http\Controllers\MaterielController;
-use App\Http\Controllers\SeanceController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -25,15 +25,8 @@ class EvenementType extends Model
         return $this->belongsTo(Evenement::class);
     }
 
-    public function histoForm(){
-        return $this->hasMany(Historiquemailform::class);
-    }
-    public function users()
+    public function candidat()
     {
-        return $this->hasMany(User::class);
-    }
-    public function classe()
-    {
-        return $this->hasMany(Classe::class);
+        return $this->hasMany(Candidat::class);
     }
 }

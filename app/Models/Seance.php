@@ -17,5 +17,13 @@ class Seance extends Model
         return $this->hasMany(SeanceCandidat::class, 'candidat_id');
     }
 
+    public function evenement_type()
+    {
+        return $this->belongsTo(EvenementType::class);
+    }
 
+    public function etape()
+    {
+        return $this->belongsTo(Etape::class);
+    }
 }
