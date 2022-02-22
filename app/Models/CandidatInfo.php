@@ -12,5 +12,6 @@ class CandidatInfo extends Model
     public function candidat()
     {
         return $this->belongsTo(Candidat::class);
+        
     }
 }

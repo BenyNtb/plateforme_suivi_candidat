@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Candidat;
+use App\Models\Genre;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -34,20 +36,38 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'nom' => ['required', 'string', 'max:255'],
+            'prenom' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:candidats'],
+            'password' => ['required', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
+        $genre = Genre::create([
+            'nom' => $request->nom,
+        ]);
+
+        $user = Candidat::create([
+            'nom' => $request->nom,
+            'prenom'=>$request->prenom,
             'email' => $request->email,
+            'role_id'=> 1,
+            'genre_id' => $genre -> id, 
             'password' => Hash::make($request->password),
         ]);
 
         event(new Registered($user));
 
-        Auth::login($user);
+        // Auth::login($user);
+        if(auth()->guard('candidat')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])) {
+            $user = auth()->user();
+
+            return redirect()->intended(url('/dashboard'));
+        } else {
+            return redirect()->back()->withError('Credentials doesn\'t match.');
+        }
 
         return redirect(RouteServiceProvider::HOME);
     }

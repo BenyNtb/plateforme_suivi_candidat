@@ -28,11 +28,18 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
-        $request->authenticate();
+        if(auth()->guard('candidat')->attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ])) {
+            $user = auth()->user();
+            // dd('ok');
+            return redirect()->intended(url('/dashboard'));
+        } else {
+            return redirect()->back()->withError('Credentials doesn\'t match.');
+        }
 
-        $request->session()->regenerate();
-
-        return redirect()->intended(RouteServiceProvider::HOME);
+        // return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**
