@@ -49,7 +49,7 @@
                             <label for="sexe_id" class="font-semibold text-gray-700 block pb-1">Genre</label>
                             <div class="flex">
                                 <input disabled id="sexe_id" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                    value="{{ Auth::user()->sexe->nom }}" />
+                                    value="{{ Auth::user()->genre->nom }}" />
                             </div>
                         </div>
                         {{-- naissance --}}
