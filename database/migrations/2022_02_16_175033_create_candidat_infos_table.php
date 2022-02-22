@@ -16,7 +16,12 @@ class CreateCandidatInfosTable extends Migration
         Schema::create('candidat_infos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('candidat_id');
+            $table->boolean('pc');
+            $table->string('statut');
+            $table->integer('phone');
             $table->string('adresse');
+            $table->string('commune');
+            $table->date('date_naissance');
             $table->text('parcours');
             $table->text('motivation');
             $table->text('objectif');

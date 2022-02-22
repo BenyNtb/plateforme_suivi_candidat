@@ -20,7 +20,7 @@ class CandidatSeeder extends Seeder
                 "nom" => "Dujardin",
                 "prenom" => "Jean",
                 "role_id"=>1,
-                "genre_id"=>1,
+                "genre_id"=>2,
                 "email" => "jeandujardin@gmail.com",
                 "password" => Hash::make("password"),
                 "created_at" => now(),
