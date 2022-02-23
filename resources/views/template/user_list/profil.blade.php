@@ -25,7 +25,7 @@
                         <label for="formation" class="font-semibold text-gray-700 block pb-1">Intérêt</label>
                         <div class="flex">
                             <input disabled id="formation" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                value="{{$etudiant->userinfos->formation}}" />
+                                value="{{$etudiant->infos->formation}}" />
                         </div>
                     </div>
                     {{-- statut --}}
@@ -33,7 +33,7 @@
                         <label for="statut" class="font-semibold text-gray-700 block pb-1">Statut</label>
                         <div class="flex">
                             <input disabled id="statut" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                value="{{$etudiant->userinfos->statut}}" />
+                                value="{{$etudiant->infos->statut}}" />
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                         <label for="commune" class="font-semibold text-gray-700 block pb-1">Commune</label>
                         <div class="flex">
                             <input disabled id="commune" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                value="{{$etudiant->userinfos->commune}}" />
+                                value="{{$etudiant->infos->commune}}" />
                         </div>
                     </div>
                     {{-- adresse --}}
@@ -87,7 +87,7 @@
                         <label for="adresse" class="font-semibold text-gray-700 block pb-1">Adresse</label>
                         <div class="flex">
                             <input disabled id="adresse" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                value="{{$etudiant->userinfos->adresse}}" />
+                                value="{{$etudiant->infos->adresse}}" />
                         </div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@
                         <label for="objectif" class="font-semibold text-gray-700 block pb-1">Objectif</label>
                         <div class="flex">
                             <textarea disabled style="height:100px;resize:none" id="objectif"
-                                class="border-1  rounded-r px-4 py-2 w-full">{{$etudiant->userinfos->objectif}}</textarea>
+                                class="border-1  rounded-r px-4 py-2 w-full">{{$etudiant->infos->objectif}}</textarea>
                         </div>
                     </div>
                     {{-- pc --}}
@@ -105,7 +105,7 @@
                         <label for="pc" class="font-semibold text-gray-700 block pb-1">PC portable disponible</label>
                         <div class="flex w-full">
                             <input disabled id="pc" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                            @if ($etudiant->userinfos->pc == 1)
+                            @if ($etudiant->infos->pc == 1)
                             value="oui" 
                             @else
                             value="non" 

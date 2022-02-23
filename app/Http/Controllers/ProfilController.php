@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Candidat;
+use App\Models\CandidatInfo;
+use App\Models\Genre;
 use App\Models\Seance;
+use App\Models\SeanceCandidat;
 use App\Models\SeanceUser;
 use App\Models\Sexe;
 use App\Models\User;
@@ -12,20 +16,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfilController extends Controller
 {
-    public function index()
+
+    public function edit(Candidat $id)
     {
-        $etudiants = User::all();
-        return view('back.inscription.index', compact('etudiants'));
-    }
-    public function edit(User $id){
         $user = $id;
-        $this->authorize('isRealUser', $user);
-        $genre = Sexe::all();
-        return view('back.profil.edit',compact("user",'genre'));
+        // $this->authorize('isRealUser', $user);
+        $genre = Genre::all();
+        return view('back.profil.edit', compact("user", 'genre'));
     }
-    public function update(User $id, Request $request){
+    public function update(Candidat $id, Request $request)
+    {
         $user = $id;
-        $this->authorize('isRealUser', $id);
+        // $this->authorize('isRealUser', $id);
         request()->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
@@ -44,12 +46,12 @@ class ProfilController extends Controller
         $user->prenom = $request->prenom;
         $user->naissance = $request->naissance;
         $user->telephone = $request->telephone;
-        $user->sexe_id = $request->genre;
+        $user->genre_id = $request->genre;
         $user->role_id = $user->role_id;
         $user->email = $request->email;
         $user->save();
 
-        $infos = UserInfos::where('user_id', $user->id)->first();
+        $infos = CandidatInfo::where('user_id', $user->id)->first();
         $infos->formation = $request->formation;
         $infos->statut = $request->statut;
         $infos->commune = $request->commune;
@@ -65,27 +67,13 @@ class ProfilController extends Controller
     {
         return view('back.profil.parcours');
     }
-    public function communaute( Request $request)
-    {
-        if ($request->communaute  == 'oui') {
-            $user = User::all()->where('id',Auth::user()->id)->first();
-            $user->communaute = 1;
-            $user->save();
-        } else {
 
-            $user = User::all()->where('id',Auth::user()->id)->first();
-            $user->communaute = 0;
-            $user->save();
-        }
-        return redirect()->route('dashboard');
-    }
-
-    public function seanceDelete(Seance $id)    
+    public function seanceDelete(Seance $id)
     {
         $seance = $id;
-        $seance->limite = $seance->limite+1;
+        $seance->limite = $seance->limite + 1;
         $seance->save();
-        $su = SeanceUser::where('seance_id', $seance->id)->where('user_id', Auth::user()->id)->first();
+        $su = SeanceCandidat::where('seance_id', $seance->id)->where('candidat_id', Auth::user()->id)->first();
         $su->delete();
         return redirect()->back()->with('warning', "Vous venez de supprimer une séance");
     }

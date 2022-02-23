@@ -45,13 +45,13 @@
                             name="formation">
                             <option disabled class="">Entrez vos intérêt </option>
                             <option value="Formation longue" class="text-black"
-                                {{ Auth::user()->userinfos->formation == 'Formation longue' ? 'selected' : '' }}>
+                                {{ Auth::user()->infos->formation == 'Formation longue' ? 'selected' : '' }}>
                                 Formation longue</option>
                             <option value="Formation courte" class="text-black"
-                                {{ Auth::user()->userinfos->formation == 'Formation courte' ? 'selected' : '' }}>
+                                {{ Auth::user()->infos->formation == 'Formation courte' ? 'selected' : '' }}>
                                 Formation courte</option>
                             <option value="Evénement (workshop, Hackaton, etc)" class="text-black"
-                                {{ Auth::user()->userinfos->formation == 'Evénement (workshop, Hackaton, etc)' ? 'selected' : '' }}>
+                                {{ Auth::user()->infos->formation == 'Evénement (workshop, Hackaton, etc)' ? 'selected' : '' }}>
                                 Evénement (workshop, Hackaton, etc)</option>
                         </select>
                         @error('formation')
@@ -68,11 +68,11 @@
                             name="statut">
                             <option disabled class="">Entrez votre statut *</option>
                             <option value="eemandeur d'emploi"
-                                {{ Auth::user()->userinfos->statut == 'Demandeur d\'emploi' ? 'selected' : '' }}>
+                                {{ Auth::user()->infos->statut == 'Demandeur d\'emploi' ? 'selected' : '' }}>
                                 Demandeur d'emploi</option>
                             <option value="etudiant"
-                                {{ Auth::user()->userinfos->statut == 'Etudiant' ? 'selected' : '' }}>Etudiant</option>
-                            <option value="autre" {{ Auth::user()->userinfos->statut == 'autre' ? 'selected' : '' }}>
+                                {{ Auth::user()->infos->statut == 'Etudiant' ? 'selected' : '' }}>Etudiant</option>
+                            <option value="autre" {{ Auth::user()->infos->statut == 'autre' ? 'selected' : '' }}>
                                 Autre</option>
                         </select>
                         @error('statut')
@@ -111,7 +111,7 @@
             <div class="sm:flex pt-5">
                 {{-- sexe --}}
                 <div class="w-full sm:w-2/4 sm:pr-5 px-5">
-                    <label for="sexe_id" class="font-semibold text-gray-700 block pb-1">Genre</label>
+                    <label for="genre_id" class="font-semibold text-gray-700 block pb-1">Genre</label>
                     <div class="flex">
                         <select
                             class="@error('genre') is-invalid @enderror border border-gray-400 rounded-lg px-4 py-2 w-full"
@@ -119,7 +119,7 @@
                             <option disabled selected value='3' class="">Entrez votre genre *</option>
                             @foreach ($genre as $item)
                                 <option value="{{ $item->id }}"
-                                    {{ Auth::user()->sexe->id == $item->id ? 'selected' : '' }}>{{ $item->nom }}
+                                    {{ Auth::user()->genre->id == $item->id ? 'selected' : '' }}>{{ $item->nom }}
                                 </option>
                             @endforeach
                         </select>
@@ -148,7 +148,7 @@
                     <label for="commune" class="font-semibold text-gray-700 block pb-1">Commune</label>
                     <div class="flex">
                         <input name="commune" id="commune" class="border border-gray-400 rounded-lg px-4 py-2 w-full"
-                            type="text" value="{{ Auth::user()->userinfos->commune }}" />
+                            type="text" value="{{ Auth::user()->infos->commune }}" />
                     </div>
                     @error('commune')
                         <span class="feedback-invalid text-xs  text-red-700">{{ $message }}</span>
@@ -160,7 +160,7 @@
                     <label for="adresse" class="font-semibold text-gray-700 block pb-1">Adresse</label>
                     <div class="flex">
                         <input name="adresse" id="autocomplete" class="border border-gray-400 rounded-lg px-4 py-2 w-full"
-                            type="text" value="{{ Auth::user()->userinfos->adresse }}" />
+                            type="text" value="{{ Auth::user()->infos->adresse }}" />
                     </div>
                     @error('adresse')
                         <span class="feedback-invalid text-xs  text-red-700">{{ $message }}</span>
@@ -174,7 +174,7 @@
                     <label for="objectif" class="font-semibold text-gray-700 block pb-1">Objectif</label>
                     <div class="flex">
                         <textarea style="height:100px;resize:none" id="objectif" name="objectif"
-                            class="border border-gray-400 rounded-lg px-4 py-2 w-full">{{ Auth::user()->userinfos->objectif }}</textarea>
+                            class="border border-gray-400 rounded-lg px-4 py-2 w-full">{{ Auth::user()->infos->objectif }}</textarea>
                     </div>
                 </div>
                 {{-- pc portable --}}
@@ -184,8 +184,8 @@
                     <select class="@error('pc') is-invalid @enderror border border-gray-400 rounded-lg px-4 py-2 w-full"
                         id='pc' name="pc">
                         <option disabled selected value='3' class="">Pc disponible *</option>
-                        <option value="1" {{ Auth::user()->userinfos->pc == 1 ? 'selected' : '' }}>oui</option>
-                        <option value="0" {{ Auth::user()->userinfos->pc == 0 ? 'selected' : '' }}>non</option>
+                        <option value="1" {{ Auth::user()->infos->pc == 1 ? 'selected' : '' }}>oui</option>
+                        <option value="0" {{ Auth::user()->infos->pc == 0 ? 'selected' : '' }}>non</option>
                     </select>
                     @error('pc')
                         <span class="feedback-invalid text-xs text-red-700">{{ $message }}</span>
