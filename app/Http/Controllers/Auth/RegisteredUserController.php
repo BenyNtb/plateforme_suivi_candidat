@@ -61,7 +61,7 @@ class RegisteredUserController extends Controller
         $infos->candidat_id = $user->id;
         $infos->date_naissance = $request->naissance;
         $infos->phone = $request->telephone;
-        $infos->motivation = $request->interet;
+        $infos->motivation = $request->formation;
         $infos->statut = $request->statut;
         $infos->commune = $request->commune;
         $infos->parcours = $request->parcours;
@@ -70,9 +70,7 @@ class RegisteredUserController extends Controller
         $infos->objectif = $request->objectif;
         $infos->save();
 
-        event(new Registered($user));
 
-        // Auth::login($user);
         if(auth()->guard('candidat')->attempt([
             'email' => $request->email,
             'password' => $request->password,
