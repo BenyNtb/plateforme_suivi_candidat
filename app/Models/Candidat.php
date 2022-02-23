@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Candidat extends Model
 {
     use HasFactory;
+    
+    protected $fillable= [
+        "nom",
+        "prenom",
+        "email",
+        "role_id",
+        "genre_id",
+        "password"
+    ];
 
     public function infos()
     {

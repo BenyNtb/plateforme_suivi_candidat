@@ -16,7 +16,9 @@ use Illuminate\Support\Facades\Route;
 //front
 Route::get('/', [FrontController::class, 'index'])->name('home');
 
-Route::post('/admin/communaute/create/', [CommunauteController::class, 'store_guest'])->name('communauté.store_guest');
+//voir autres dates 
+Route::get('/date/{id}', [FrontController::class, 'showDate'])->name('date.index');
+Route::get('/description/{id}', [FrontController::class, 'description'])->name('seance.description');
 
 // Route::get('/', function () {
 //     return view('welcome');

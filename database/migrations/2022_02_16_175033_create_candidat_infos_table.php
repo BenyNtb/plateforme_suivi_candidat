@@ -25,7 +25,6 @@ class CreateCandidatInfosTable extends Migration
             $table->text('parcours');
             $table->text('motivation');
             $table->text('objectif');
-            $table->text('connaissance');
             $table->timestamps();
         });
     }

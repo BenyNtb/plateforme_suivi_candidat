@@ -25,7 +25,7 @@
                             <div class="w-3/4 mx-auto flex flex-col">
                                 <p class="italic text-white sm:text-xl md:text-3xl lg:text-4xl uppercase text-center  font-semibold "
                                     id="seance">
-                                    {{-- {{ $seance->etape->nom }} {{ $type->nom }} --}}
+                                    {{ $seance->etape->nom }} {{ $type->nom }}
                                 </p>
                                 <p class="italic text-white sm:text-l md:text-2xl lg:text-3xl text-center " id="date">
                                     {{ date('d M', strtotime($seance->date_debut)) }}
