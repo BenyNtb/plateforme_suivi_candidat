@@ -67,6 +67,7 @@
                                             <span class="ml-2 text-sm tracking-wide truncate">Profil</span>
                                         </a>
                                     </li>
+<<<<<<< HEAD
                                     <li>
                                         {{-- <a href="{{route('index.classe')}}"
                                             class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-gray-50 text-white hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
@@ -99,6 +100,8 @@
                                             <div class="text-sm font-light tracking-wide text-gray-500">Evenements</div>
                                         </div>
                                     </li>
+=======
+>>>>>>> 15a993ac4715c63b00899b0a2e6611f6d2125235
                                     <li>
                                         <a href="{{route('seance.index')}}"
                                             class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-gray-50 text-white hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
@@ -111,6 +114,7 @@
                                             </span>
                                             <span class="ml-2 text-sm tracking-wide truncate">Ton parcours</span>
                                             {{-- <span
+<<<<<<< HEAD
                                                 class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-500 bg-green-50 rounded-full {{count(Auth::user()->seance_user)==0? 'hidden': ''}}" >{{count(Auth::user()->seance_user)}}</span> --}}
                                         </a>
                                     </li>
@@ -140,6 +144,26 @@
                                                 <span class="ml-2 text-gray-600	text-sm tracking-wide truncate">Condition d'utilisation </span>
                                             </a> --}}
                                         </li>
+=======
+                                                class="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-500 bg-green-50 rounded-full {{count(Auth::user()->seance_candidat)==0? 'hidden': ''}}" >{{count(Auth::user()->seance_user)}}</span> --}}
+                                        </a>
+                                    </li>
+                                    <form action="{{route('logout')}}" method="post" class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-gray-50 text-white hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
+                                        @csrf
+                                        <button type='submit'
+                                        class="inline-flex justify-center items-center">
+                                            <span class="inline-flex justify-center items-center ml-4">
+                                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                                    </path>
+                                                </svg>
+                                            </span>
+                                            <span class="ml-2 text-sm tracking-wide truncate">Se déconnecter</span>
+                                        </button>
+                                    </form>
+>>>>>>> 15a993ac4715c63b00899b0a2e6611f6d2125235
                                     
                                 </ul>
                             </div>
