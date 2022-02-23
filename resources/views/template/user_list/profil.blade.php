@@ -69,7 +69,7 @@
                         <label for="naissance" class="font-semibold text-gray-700 block pb-1">Naissance</label>
                         <div class="flex">
                             <input disabled id="naissance" class="border-1  rounded-r px-4 py-2 w-full" type="date"
-                                value="{{$etudiant->naissance}}" />
+                                value="{{$etudiant->infos->date_naissance}}" />
                         </div>
                     </div>
                 </div>

@@ -24,6 +24,20 @@ Route::get('/login', [AuthenticatedSessionController::class, 'create'])
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest')
                 ->name('loginSeance');
+                
+Route::get('/register/{id}', [RegisteredUserController::class, 'create'])
+                ->middleware('guest')
+                ->name('register');
+
+Route::post('/register/{id}', [RegisteredUserController::class, 'store'])
+                ->middleware('guest');
+
+Route::get('/login/{id}', [AuthenticatedSessionController::class, 'create'])
+                ->middleware('guest')
+                ->name('loginSeance');
+
+Route::post('/login/{id}', [AuthenticatedSessionController::class, 'store'])
+                ->middleware('guest');
 
 Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
                 ->middleware('guest')

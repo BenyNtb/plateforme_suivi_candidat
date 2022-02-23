@@ -9,6 +9,15 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Candidat extends  Authenticatable
 {
     use HasFactory;
+    
+    protected $fillable= [
+        "nom",
+        "prenom",
+        "email",
+        "role_id",
+        "genre_id",
+        "password"
+    ];
 
     public function infos()
     {

@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Candidat;
+use App\Models\CandidatInfo;
 use App\Models\Genre;
+use App\Models\Seance;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,9 +22,11 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Seance $id)
     {
-        return view('auth.register');
+        $seance = $id;
+        $genres = Genre::all();
+        return view('auth.register', compact('seance', 'genres'));
     }
 
     /**
@@ -42,18 +46,29 @@ class RegisteredUserController extends Controller
             'password' => ['required', Rules\Password::defaults()],
         ]);
 
-        $genre = Genre::create([
-            'nom' => $request->nom,
-        ]);
+
 
         $user = Candidat::create([
             'nom' => $request->nom,
             'prenom'=>$request->prenom,
             'email' => $request->email,
             'role_id'=> 1,
-            'genre_id' => $genre -> id, 
+            'genre_id' => $request->genre, 
             'password' => Hash::make($request->password),
         ]);
+
+        $infos = new CandidatInfo();
+        $infos->candidat_id = $user->id;
+        $infos->date_naissance = $request->naissance;
+        $infos->phone = $request->telephone;
+        $infos->motivation = $request->interet;
+        $infos->statut = $request->statut;
+        $infos->commune = $request->commune;
+        $infos->parcours = $request->parcours;
+        $infos->adresse = $request->adresse;
+        $infos->pc = $request->pc;
+        $infos->objectif = $request->objectif;
+        $infos->save();
 
         event(new Registered($user));
 

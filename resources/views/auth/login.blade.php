@@ -3,7 +3,7 @@
         $url = url()->current();
         $route = app('router')->getRoutes($url)->match(app('request')->create($url))->getName();
     @endphp
-    <div>
+    <div class="my-5">
         <div class="lg:flex">
             <div class="lg:w-5/12 px-10 sm:px-32">
                 <a href="https://molengeek.com/">

@@ -1,4 +1,4 @@
-    <div class="flex justify-between">
+div    <div class="flex justify-between">
         <h2 class="text-4xl">Profil :{{ ucfirst(Auth::user()->nom)}} {{ ucfirst(Auth::user()->prenom)  }}  </h2>
         <a href="{{ route('profil.edit', Auth::user()->id) }}"><button
                 class="bg-white text-gray-800 font-bold rounded border-b-2 border-purple-700 hover:border-purple-900 hover:bg-purple-700 hover:text-white shadow-md py-2 px-6 inline-flex items-center"><i
@@ -57,8 +57,8 @@
                             <label for="naissance" class="font-semibold text-gray-700 block pb-1">Naissance</label>
                             <div class="flex">
                                 <input disabled id="naissance" class="border-1  rounded-r px-4 py-2 w-full" type="date"
-                                    value="{{ Auth::user()->naissance }}" />
-                            </div>
+                                    value="{{ Auth::user()->infos->date_naissance }}" />
+                                </div>
                         </div>
                     </div>
                     <div class="sm:flex pt-5">
