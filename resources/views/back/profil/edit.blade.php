@@ -100,7 +100,7 @@
                     <div class="flex">
                         <input name="telephone" id="telephone"
                             class="border border-gray-400 rounded-lg px-4 py-2 w-full" type="number"
-                            value="0{{ Auth::user()->telephone }}" />
+                            value="0{{ Auth::user()->infos->phone }}" />
                     </div>
                     @error('telephone')
                         <span class="feedback-invalid text-xs  text-red-700">{{ $message }}</span>
@@ -134,7 +134,7 @@
                     <div class="flex">
                         <input name="naissance" id="naissance" name="naissance"
                             class="@error('naissance') is-invalid @enderror border border-gray-400 rounded-lg px-4 py-2 w-full"
-                            type="date" value="{{ Auth::user()->naissance }}" />
+                            type="date" value="{{ Auth::user()->infos->date_naissance }}" />
                     </div>
                     @error('naissance')
                         <span class="feedback-invalid text-xs  text-red-700">{{ $message }}</span>

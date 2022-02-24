@@ -31,11 +31,16 @@ class Candidat extends  Authenticatable
 
     public function seance_candidat()
     {
-        return $this->hasMany(SeanceCandidat::class, 'candidat_id   ');
+        return $this->hasMany(SeanceCandidat::class, 'candidat_id');
     }
     
     public function genre()
     {
         return $this->belongsTo(Genre::class);
     }
+    
+    public function inscrits(){
+        return $this->belongsToMany(Seance::class , 'seance_candidats' , 'candidat_id');
+    }
+
 }

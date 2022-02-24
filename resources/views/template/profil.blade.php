@@ -1,4 +1,5 @@
-div    <div class="flex justify-between">
+<div>
+    <div class="flex justify-between">
         <h2 class="text-4xl">Profil :{{ ucfirst(Auth::user()->nom)}} {{ ucfirst(Auth::user()->prenom)  }}  </h2>
         <a href="{{ route('profil.edit', Auth::user()->id) }}"><button
                 class="bg-white text-gray-800 font-bold rounded border-b-2 border-purple-700 hover:border-purple-900 hover:bg-purple-700 hover:text-white shadow-md py-2 px-6 inline-flex items-center"><i
@@ -13,7 +14,7 @@ div    <div class="flex justify-between">
                             <label for="nom" class="font-semibold text-gray-700 block pb-1">Nom</label>
                             <div class="flex">
                                 <input disabled id="nom" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                    value="{{ Auth::user()->nom }}" />
+                                value="{{ Auth::user()->nom }}" />
                             </div>
                         </div>
                         {{-- prenom --}}
@@ -39,7 +40,7 @@ div    <div class="flex justify-between">
                             <label for="telephone" class="font-semibold text-gray-700 block pb-1">Telephone</label>
                             <div class="flex">
                                 <input disabled id="telephone" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                    value="0{{ Auth::user()->telephone }}" />
+                                    value="0{{ Auth::user()->infos->phone }}" />
                             </div>
                         </div>
                     </div>
@@ -62,13 +63,7 @@ div    <div class="flex justify-between">
                         </div>
                     </div>
                     <div class="sm:flex pt-5">
-                        <div class="w-full sm:w-2/4 sm:pr-5 px-5">
-                            <label for="formation" class="font-semibold text-gray-700 block pb-1">Intérêt</label>
-                            {{-- <div class="flex">
-                                <input disabled id="formation" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                    value="{{ Auth::user()->userinfos->formation }}" />
-                            </div> --}}
-                        </div>
+                        
                         {{-- statut --}}
                         <div class="w-full sm:w-2/4 sm:pl-5 px-5 sm:pt-0 pt-5">
                             <label for="statut" class="font-semibold text-gray-700 block pb-1">Statut</label>
@@ -115,8 +110,10 @@ div    <div class="flex justify-between">
                             <textarea disabled style="height:100px;resize:none" id="objectif"
                                 class="border-1  rounded-r px-4 py-2 w-full">{{ Auth::user()->infos->objectif }}</textarea>
                         </div>
-                    </div>npm
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+                    </div>   

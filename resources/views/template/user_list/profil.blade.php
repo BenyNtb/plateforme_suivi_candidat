@@ -51,7 +51,7 @@
                         <label for="telephone" class="font-semibold text-gray-700 block pb-1">Telephone</label>
                         <div class="flex">
                             <input disabled id="telephone" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                value="0{{$etudiant->telephone}}" />
+                                value="0{{$etudiant->infos->phone}}" />
                         </div>
                     </div>
                 </div>

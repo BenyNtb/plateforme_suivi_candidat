@@ -44,16 +44,16 @@ class ProfilController extends Controller
         ]);
         $user->nom = $request->nom;
         $user->prenom = $request->prenom;
-        $user->naissance = $request->naissance;
-        $user->telephone = $request->telephone;
         $user->genre_id = $request->genre;
         $user->role_id = $user->role_id;
         $user->email = $request->email;
         $user->save();
-
-        $infos = CandidatInfo::where('user_id', $user->id)->first();
-        $infos->formation = $request->formation;
+        
+        $infos = CandidatInfo::where('candidat_id', $user->id)->first();
+        $infos->motivation = $request->formation;
         $infos->statut = $request->statut;
+        $infos->phone = $request->telephone;
+        $infos->date_naissance = $request->naissance;
         $infos->commune = $request->commune;
         $infos->adresse = $request->adresse;
         $infos->objectif = $request->objectif;
