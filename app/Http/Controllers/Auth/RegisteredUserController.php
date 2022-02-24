@@ -7,6 +7,7 @@ use App\Models\Candidat;
 use App\Models\CandidatInfo;
 use App\Models\Genre;
 use App\Models\Seance;
+use App\Models\SeanceCandidat;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -37,7 +38,7 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request, Seance $id)
     {
         $request->validate([
             'nom' => ['required', 'string', 'max:255'],
@@ -70,6 +71,15 @@ class RegisteredUserController extends Controller
         $infos->objectif = $request->objectif;
         $infos->save();
 
+        $jour = $id;
+        $seance_inscrit = new SeanceCandidat();
+        $seance_inscrit->candidat_id = $user->id;
+        $seance_inscrit->seance_id = $jour->id;
+        $seance_inscrit->presence = 0;
+        $seance_inscrit->inscrit = 1;
+        $seance_inscrit->save();
+        $jour->limite = $jour->limite-1;
+        $jour->save();
 
         if(auth()->guard('candidat')->attempt([
             'email' => $request->email,

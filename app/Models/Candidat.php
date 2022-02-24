@@ -31,7 +31,7 @@ class Candidat extends Authenticatable
 
     public function seance_candidat()
     {
-        return $this->hasMany(SeanceCandidat::class, 'candidat_id   ');
+        return $this->hasMany(SeanceCandidat::class, 'candidat_id');
     }
     
     public function genre()
