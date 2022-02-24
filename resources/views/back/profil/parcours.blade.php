@@ -9,9 +9,6 @@
                 ->match(app('request')->create($url))
                 ->getName();
         @endphp
-        @if (Auth::user()->role_id == 6)
-            @include('layouts.admis')
-        @endif
     
         <section class=" text-gray-200">
             <div class="max-w-6xl mx-auto px-5 py-10 ">
@@ -25,21 +22,22 @@
                 @include('layouts.flash')
                 <div class="flex flex-wrap -m-2 ">
                     {{-- verifier s'il est deja inscrit pr un jour d itw --}}
-                    @foreach (Auth::user()->inscrits as $seance)
+                    {{-- @foreach (Auth::user()->inscrits as $seance)
                         @if ($seance->etape_id == 2 )
                             {{ $verif = true }}
                         @else
                             {{ $verif = false }}
                         @endif
-                    @endforeach
+                    @endforeach --}}
                     {{-- fin d itw --}}
                     
-                    @forelse (Auth::user()->seance_user as $seance)
+                    @forelse (Auth::user()->seance_candidat as $seance)
                     {{-- @forelse (Auth::user()->inscrits->sortBy('evenement_type_id') as $seance) --}}
+                    
                         @php
                             $dateJour = \Carbon\Carbon::now();
-                            $present = App\Models\SeanceUser::where('seance_id', $seance->seance->id)
-                                ->where('user_id', Auth::user()->id)
+                            $present = App\Models\SeanceCandidat::where('seance_id', $seance->seance->id)
+                                ->where('candidat_id', Auth::user()->id)
                                 ->withTrashed()
                                 ->first();
                         @endphp
@@ -70,7 +68,7 @@
                                     <p class="leading-relaxed text-base">
                                         {{ $seance->seance->lieu }}
                                     </p>
-                                    @if ($seance->seance->etape->nom == 'week' && Auth::user()->role_id == 3)
+                                    @if ($seance->seance->etape->nom == 'week' && Auth::user()->role_id == 1)
                                         <p class="text-base text-indigo-700 font-bold">
                                             Vous allez recevoir un email de confirmation d'inscription
                                         </p>
@@ -94,7 +92,7 @@
                                                 Present
                                             </span>
                                         </div>
-                                        @if ($seance->seance->etat == 0 && $seance->seance->seance_user->where('user_id', Auth::user()->id)->first()->inscrit == 1 && $seance->seance->etape->nom != 'interview')
+                                        @if ($seance->seance->etat == 0 && $seance->seance->seance_candidat->where('candidat_id', Auth::user()->id)->first()->inscrit == 1 && $seance->seance->etape->nom != 'interview')
                                             <a href="{{ route('inscription.date', [$seance->seance->evenement_type->id, $seance->seance]) }}"><button
                                                     class="bg-white text-gray-800 font-bold rounded border-b-2 border-purple-700 hover:border-purple-900 hover:bg-purple-700 hover:text-white shadow-md py-2 px-2 inline-flex items-center">Inscrire
                                                     Interview</button></a>

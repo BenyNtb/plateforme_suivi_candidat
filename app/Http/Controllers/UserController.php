@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllCommentaire;
+use App\Models\CandidatInfo;
 use App\Models\Classe;
 use App\Models\Commentaire;
 use App\Models\EvenementType;
@@ -75,7 +76,7 @@ class UserController extends Controller
         $user->telephone = $request->telephone;
         $user->sexe_id = $request->genre;
         $user->save();
-        $infos = UserInfos::where('user_id', $user->id)->first();
+        $infos = CandidatInfo::where('user_id', $user->id)->first();
         $infos->formation = $request->formation;
         $infos->statut = $request->statut;
         $infos->commune = $request->commune;

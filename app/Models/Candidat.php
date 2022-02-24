@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Candidat extends Authenticatable
+class Candidat extends  Authenticatable
 {
     use HasFactory;
     
@@ -38,4 +38,9 @@ class Candidat extends Authenticatable
     {
         return $this->belongsTo(Genre::class);
     }
+    
+    public function inscrits(){
+        return $this->belongsToMany(Seance::class , 'seance_candidats' , 'candidat_id');
+    }
+
 }

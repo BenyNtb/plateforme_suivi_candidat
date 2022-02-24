@@ -42,9 +42,9 @@
                                     <select
                                         class="@error('formation') is-invalid @enderror py-2  form-select mt-1 block w-full border-none shadow-none"
                                         name="formation">
-                                        <option value="Formation longue" class="text-black" {{$etudiant->userinfos->formation == "Formation longue" ? 'selected': ''}}>Formation longue</option>
-                                        <option value="Formation courte" class="text-black" {{$etudiant->userinfos->formation == "Formation courte" ? 'selected': ''}}>Formation courte</option>
-                                        <option value="Evénement (workshop, Hackaton, etc)" class="text-black" {{$etudiant->userinfos->formation == "Evénement (workshop, Hackaton, etc)" ? 'selected': ''}}>
+                                        <option value="Formation longue" class="text-black" {{$etudiant->infos->formation == "Formation longue" ? 'selected': ''}}>Formation longue</option>
+                                        <option value="Formation courte" class="text-black" {{$etudiant->infos->formation == "Formation courte" ? 'selected': ''}}>Formation courte</option>
+                                        <option value="Evénement (workshop, Hackaton, etc)" class="text-black" {{$etudiant->infos->formation == "Evénement (workshop, Hackaton, etc)" ? 'selected': ''}}>
                                             Evénement(workshop, Hackaton, etc)</option>
                                     </select>
                                     @error('formation')
@@ -58,9 +58,9 @@
                                     <select
                                         class="@error('statut') is-invalid @enderror py-2  form-select mt-1 block w-full border-none shadow-none"
                                         name="statut">
-                                            <option value="demandeur d'emploi" class="text-black" {{$etudiant->userinfos->statut == "demandeur d'emploi"}}>Demandeur d'emploi</option>
-                                            <option value="etudiant" class="text-black" {{$etudiant->userinfos->statut == "etudiant"}}>Etudiant</option>
-                                            <option value="autre" class="text-black" {{$etudiant->userinfos->statut == "autre"}}>Autre</option>
+                                            <option value="demandeur d'emploi" class="text-black" {{$etudiant->infos->statut == "demandeur d'emploi"}}>Demandeur d'emploi</option>
+                                            <option value="etudiant" class="text-black" {{$etudiant->infos->statut == "etudiant"}}>Etudiant</option>
+                                            <option value="autre" class="text-black" {{$etudiant->infos->statut == "autre"}}>Autre</option>
                                     </select>
                                     @error('statut')
                                     <span class="feedback-invalid text-xs  text-red-700">{{$message}}</span>
@@ -95,7 +95,7 @@
                                         class="@error('genre') is-invalid @enderror py-2  form-select mt-1 block w-full border-none shadow-none"
                                         name="genre">
                                             @foreach ($genres as $genre)
-                                                <option value="{{$genre->id}}" class="text-black" {{$etudiant->sexe_id == $genre->id ? 'selected' : ""}}>{{$genre->nom}}</option>                                                
+                                                <option value="{{$genre->id}}" class="text-black" {{$etudiant->genre_id == $genre->id ? 'selected' : ""}}>{{$genre->nom}}</option>                                                
                                         @endforeach
                                     </select>
                                     @error('genre')
@@ -118,7 +118,7 @@
                                 <label for="commune" class="font-semibold text-gray-700 block pb-1">Commune</label>
                                 <div class="flex  border-b border-purple-800">
                                     <input id="commune" name="commune" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                        value="{{$etudiant->userinfos->commune}}" />
+                                        value="{{$etudiant->infos->commune}}" />
                                 </div>
                             </div>
                             {{-- adresse --}}
@@ -126,7 +126,7 @@
                                 <label for="adresse" class="font-semibold text-gray-700 block pb-1">Adresse</label>
                                 <div class="flex  border-b border-purple-800">
                                     <input id="adresse" name="adresse" class="border-1  rounded-r px-4 py-2 w-full" type="text"
-                                        value="{{$etudiant->userinfos->adresse}}" />
+                                        value="{{$etudiant->infos->adresse}}" />
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@
                                 <label for="objectif" class="font-semibold text-gray-700 block pb-1">Objectif</label>
                                 <div class="flex  border-b border-purple-800">
                                     <textarea name="objectif" style="height:100px;resize:none" id="objectif"
-                                        class="border-1  rounded-r px-4 py-2 w-full">{{$etudiant->userinfos->objectif}}</textarea>
+                                        class="border-1  rounded-r px-4 py-2 w-full">{{$etudiant->infos->objectif}}</textarea>
                                 </div>
                             </div>
                             {{-- pc --}}
@@ -147,8 +147,8 @@
                                     <select
                                     class="@error('formation') is-invalid @enderror py-2  form-select mt-1 block w-full border-none shadow-none"
                                     name="pc">
-                                    <option value="0" class="text-black" {{$etudiant->userinfos->pc == '0' ? "selected" : ""}}>non</option>
-                                    <option value="1" class="text-black" {{$etudiant->userinfos->pc == '1' ? "selected" : ""}}>oui</option>
+                                    <option value="0" class="text-black" {{$etudiant->infos->pc == '0' ? "selected" : ""}}>non</option>
+                                    <option value="1" class="text-black" {{$etudiant->infos->pc == '1' ? "selected" : ""}}>oui</option>
                             </select>
                         </div>
                             </div>
