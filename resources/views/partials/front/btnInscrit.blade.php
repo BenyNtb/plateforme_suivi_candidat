@@ -1,7 +1,7 @@
-@auth
+@if(Auth::guard('candidat')->user())
 @php
-    $seance_inscrit = Auth::user()->seance_candidat;
-@endphp
+    $seance_inscrit =  Auth::user()->inscrits;
+    @endphp
     @if ($seance_inscrit->contains('seance_id', $seance->id)) 
     <a
     class="opacity-75  mt-3 bg-purple-600 bg-opacity-90  text-sm font-bold py-6 px-8 rounded inline-flex items-center">
@@ -21,8 +21,8 @@
     </button>
     </form>
     @endif
-@endauth
-@guest
+@endif
+@if(!Auth::guard('candidat')->user())
 <a class="opacity-75  mt-3 bg-gray-100 hover:bg-purple-600 bg-opacity-90 hover:text-white text-sm font-bold py-6 px-8 rounded inline-flex items-center"
     href="{{ route('loginSeance', $seance->id) }}">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
@@ -32,4 +32,4 @@
     </svg>
     <span class="text-base">Inscris toi!</span>
 </a>
-@endguest
+@endif

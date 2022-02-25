@@ -7,11 +7,11 @@
 
         </div>
         <div class="w-1/4 text-right  pr-10">
-            <ul c>
-                @guest
+            <ul>
+                @guest('candidat')
                 <li><a href="{{route('login')}}">Login</a></li>
                 @endguest
-                @auth
+                @auth('candidat')
                 <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                 @endauth
             </ul>

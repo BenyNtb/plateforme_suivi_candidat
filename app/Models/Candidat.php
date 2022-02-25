@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Candidat extends  Authenticatable
 {
     use HasFactory;
-    
     protected $fillable= [
         "nom",
         "prenom",
@@ -18,7 +17,11 @@ class Candidat extends  Authenticatable
         "genre_id",
         "password"
     ];
-
+    
+    public function getAuthPassword()
+    {
+     return $this->password;
+    }
     public function infos()
     {
         return $this->hasOne(CandidatInfo::class);

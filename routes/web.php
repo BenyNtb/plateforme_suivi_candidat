@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\SeanceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +22,6 @@ Route::get('/', [FrontController::class, 'index'])->name('home');
 Route::get('/date/{id}', [FrontController::class, 'showDate'])->name('date.index');
 Route::get('/description/{id}', [FrontController::class, 'description'])->name('seance.description');
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
 
 Route::get('/dashboard', function () {
     return view('back/dashboard');
@@ -35,6 +33,7 @@ require __DIR__ . '/auth.php';
 Route::middleware(['auth:candidat'])->group(function () {
     //inscription séance
     Route::post('/dashboard/inscrit/{id}', [SeanceController::class, "inscription"])->name('inscription');
+
     //profil
     Route::put('/back/profil/communaute', [ProfilController::class, 'communaute'])->name('form.communaute');
     Route::get('/back/profil/{id}/edit', [ProfilController::class, 'edit'])->name('profil.edit');

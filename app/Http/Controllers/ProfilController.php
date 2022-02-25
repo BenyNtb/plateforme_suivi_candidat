@@ -20,14 +20,14 @@ class ProfilController extends Controller
     public function edit(Candidat $id)
     {
         $user = $id;
-        // $this->authorize('isRealUser', $user);
+        $this->authorize('isRealUser', $user);
         $genre = Genre::all();
         return view('back.profil.edit', compact("user", 'genre'));
     }
     public function update(Candidat $id, Request $request)
     {
         $user = $id;
-        // $this->authorize('isRealUser', $id);
+        $this->authorize('isRealUser', $id);
         request()->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',

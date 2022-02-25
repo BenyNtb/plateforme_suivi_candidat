@@ -92,7 +92,7 @@
                                                 Present
                                             </span>
                                         </div>
-                                        @if ($seance->seance->etat == 0 && $seance->seance->seance_candidat->where('candidat_id', Auth::user()->id)->first()->inscrit == 1 && $seance->seance->etape->nom != 'interview')
+                                        @if ($seance->seance->etat == 0 && $seance->inscrit ==1 && $seance->seance->etape->nom != 'interview')
                                             <a href="{{ route('inscription.date', [$seance->seance->evenement_type->id, $seance->seance]) }}"><button
                                                     class="bg-white text-gray-800 font-bold rounded border-b-2 border-purple-700 hover:border-purple-900 hover:bg-purple-700 hover:text-white shadow-md py-2 px-2 inline-flex items-center">Inscrire
                                                     Interview</button></a>

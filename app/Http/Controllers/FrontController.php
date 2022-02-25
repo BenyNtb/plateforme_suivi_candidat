@@ -6,6 +6,7 @@ use App\Models\EvenementType;
 use App\Models\Seance;
 use App\Models\StockageText;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {

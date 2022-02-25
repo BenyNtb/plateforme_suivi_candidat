@@ -6,6 +6,7 @@
     <!-- component -->
     <div class="z-30 relative flex flex-row flex-wrap w-4/5 mx-auto">
         @include('layouts.flash')
+
         @isset($types)
             @forelse ($types as $type)
                 @php
@@ -34,7 +35,7 @@
                                     <p class="italic text-white sm:text-l md:text-2xl lg:text-3xl text-center ">
                                         {{ $seance->lieu }}
                                     </p>
-                                    @include('layouts.boutonInscrit')
+                                    @include('partials.front.btnInscrit')
                                     <a href="{{ route('date.index', $type->id) }}" class="text-white italic  text-xl ">Plus de dates</a>
                                     <a href="{{ route('seance.description', $seance->id) }}" class="text-white italic underline text-2xl absolute right-5 bottom-3">Voir détails</a>
                                 </div>
@@ -52,6 +53,7 @@
 
             @endforelse
         @endisset
+        
     </div>
 
 @endsection
