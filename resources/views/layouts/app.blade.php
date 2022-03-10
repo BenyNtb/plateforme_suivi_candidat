@@ -37,7 +37,7 @@
                     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-200 text-white"> 
                         <div class="fixed flex flex-col top-0 left-0 w-64 bg-gray-800 h-full border-purple-400">
                             <div class="flex items-center justify-center">
-                                <img src="/img/MG_LOGO_fav.png" alt="logo MG">
+                                <img src="/img/MG_LOGO_fav.png" alt="logo MG"style="width: 25%" class="mx-auto mt-4">
                             </div>
 
                             <h4 class="text-center my-2 text-lg">{{ Auth::user()->nom }} {{ Auth::user()->prenom}}</h4>
@@ -67,33 +67,7 @@
                                             <span class="ml-2 text-sm tracking-wide truncate">Profil</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        {{-- <a href="{{route('index.classe')}}"
-                                            class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-gray-50 text-white hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-                                            <span class="inline-flex justify-center items-center ml-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clipboard" viewBox="0 0 16 16">
-                                                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
-                                                    <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
-                                                </svg>                                            
-                                            </span>
-                                            <span class="ml-2 text-sm tracking-wide truncate">Ma Classe</span>
-                                        </a> --}}
-                                    </li>
-                                    <li>
-                                        {{-- <a href="{{route('calendrier.index')}}"
-                                            class="relative flex flex-row items-center h-8 focus:outline-none hover:bg-gray-50 text-white hover:text-gray-800 border-l-4 border-transparent hover:border-indigo-500 pr-6">
-                                            <span class="inline-flex justify-center items-center ml-4">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-                                                    <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                                                    <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                                                </svg>
-                                                </span>
-                                            <span class="ml-2 text-sm tracking-wide truncate">Calendrier</span>
-                                        </a> --}}
-                                    </li>
-                                    <li>
-                                        
-                                    </li>
+
                                     <li class="px-5">
                                         <div class="flex flex-row items-center h-8">
                                             <div class="text-sm font-light tracking-wide text-gray-500">Evenements</div>
@@ -147,7 +121,7 @@
                     </div>
                     <div class="w-full dash_space h-screen">
                         <div class="px-20 flex flex-col justify-center items-center h-screen">
-                            <div class="bg-white overflow-hidden shadow-lg rounded-2xl height_size w-11/12 p-8" style="overflow-y: scroll; max-height:90vh;">                                
+                            <div class="bg-white overflow-hidden shadow-lg rounded-2xl height_size w-11/12 p-8" style="overflow-y: scroll; max-height:90vh;margin:10vw; width:60vw">                                
                                 {{ $slot }}
                             </div>
                         </div>

@@ -20,7 +20,7 @@
                         <p class="italic text-white sm:text-l md:text-2xl lg:text-3xl text-center ">
                             {{$seance->lieu}}
                         </p>
-                        @include('layouts.boutonInscrit')
+                        @include('partials.front.btnInscrit')
                     </div>
                 </div>
                 <p class="absolute bottom-10 right-10 italic text-white sm:text-sm md:text-xl lg:text-2xl">

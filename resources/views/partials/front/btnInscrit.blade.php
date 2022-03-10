@@ -1,6 +1,6 @@
 @if(Auth::guard('candidat')->user())
 @php
-    $seance_inscrit =  Auth::user()->inscrits;
+    $seance_inscrit =  Auth::guard('candidat')->user()->inscrits;
     @endphp
     @if ($seance_inscrit->contains('seance_id', $seance->id)) 
     <a
